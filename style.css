@@ -1,0 +1,156 @@
+*::before,*::after{
+    box-sizing:border-box;
+}
+body
+{
+    background-color: rgb(95, 144, 207);
+    margin:0;
+}
+.heading
+{
+    font-size: 4em;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:beige
+}
+.container
+{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    justify-content: center;
+    align-content: center;
+    justify-items:center;
+    align-items: center;
+}
+.boxes
+{
+    border: solid rgb(43, 29, 29) 2px;
+    height:var(--box-size);
+    width:var(--box-size);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+.boxes:first-child,
+.boxes:nth-child(2),
+.boxes:nth-child(3)
+{
+    border-top:none;
+}
+.boxes:nth-child(3n+1)
+{
+    border-left:none;
+}
+.boxes:nth-child(3n+3)
+{
+    border-right:none;
+}
+.boxes:last-child,
+.boxes:nth-child(7),
+.boxes:nth-child(8)
+{
+    border-bottom: none;
+}
+
+:root
+{
+--box-size:100px;
+--mark-size:calc(var(--cell-size)*0.9);
+}
+.boxes.x::before,.boxes.x::after,
+.container.x .boxes:not(.x):not(.o):hover::after,
+.container.x .boxes:not(.x):not(.o):hover::before
+{
+    content:" ";
+    width:14px; 
+    height:90px;
+    background-color: black;
+    position:absolute;
+} 
+.boxes.x::before,
+.container.x .boxes:not(.x):not(.o):hover::before
+{
+   transform:rotate(45deg);
+}
+.boxes.x::after,
+.container.x .boxes:not(.x):not(.o):hover::after
+{
+    transform: rotate(-45deg);
+}
+.boxes.o::before,
+.boxes.o::after,
+.container.o .boxes:not(.x):not(.o):hover::after,
+.container.o .boxes:not(.x):not(.o):hover::before
+{
+    content:" ";
+    width:90px;
+    height:90px;
+    border-radius: 50%;
+    background-color: black;
+    position:absolute;
+}
+.boxes.o::before,
+.container.o .boxes:not(.x):not(.o):hover::before
+{
+   background-color: black;
+}
+
+.boxes.x,
+.boxes.o
+{
+cursor:not-allowed
+}
+.container.x .boxes:not(.x):not(.o):hover::after,
+.container.x .boxes:not(.x):not(.o):hover::before,
+.container.o .boxes:not(.x):not(.o):hover::after,
+.container.o .boxes:not(.x):not(.o):hover::before
+{
+    background-color:rgb(116, 103, 103);
+}
+.boxes.o::after,
+.container.o .boxes:not(.x):not(.o):hover::after
+{
+    width:65px;
+    height:65px;
+    background-color:rgb(95, 144, 207);
+}
+.winningmessage
+{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    justify-content:center;
+    align-items: center;
+    font-size:5rem;
+    flex-direction: column;
+    color:beige;
+    background-color:rgba(0,0,0,.9);
+    display:none;
+}
+.winningmessage button
+{
+    display:flex;
+    justify-content: center;
+    border:beige solid 2px;
+    font-size:4rem;
+    background-color: beige;
+    color:black;
+    border: black solid 2px;
+}
+.winningmessage button:hover
+{
+    background-color:black;
+    color:beige;
+    border:beige solid 2px;
+    cursor:pointer;
+}
+.winningmessage.show
+{
+    display:flex;
+}
